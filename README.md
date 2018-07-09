@@ -1,10 +1,9 @@
-# YurunHttp
+# component_http
 
 
 
 ## 简介
 
-ByHttp 是开源的PHP HTTP类库，支持链式操作，简单易用。
 
 支持所有常见的GET、POST、PUT、DELETE、UPDATE等请求方式，支持上传下载、设置和读取header、Cookie、请求参数、失败重试、限速、代理、证书等。
 
@@ -17,7 +16,7 @@ ByHttp 是开源的PHP HTTP类库，支持链式操作，简单易用。
 ```json
 {
     "require": {
-        "itboye/compoent_http": "~1.0"
+        "itboye/compoent_http": "1.0.*"
     }
 }
 ```
@@ -45,8 +44,8 @@ echo 'html:', PHP_EOL, $response->body();
 
 ```php
 <?php
-use Yurun\Util\YurunHttp\Http\Request;
-use Yurun\Util\YurunHttp;
+use by\component_http\ByHttp\Http\Request;
+use by\component_http\ByHttp;
 
 $url = 'http://www.baidu.com';
 
