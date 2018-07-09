@@ -4,9 +4,7 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use by\component_http\HttpRequest;
-use by\component_http\ByHttp\Http\Psr7\UploadedFile;
-use by\component_http\ByHttp\Http\Psr7\Consts\MediaType;
+use by\component\http\HttpRequest;
 
 $url = 'http://127.0.0.1:8080/Index/upload';
 

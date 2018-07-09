@@ -1,7 +1,7 @@
 <?php
-namespace by\component_http\ByHttp\Http;
+namespace by\component\http\ByHttp\Http;
 
-use by\component_http\ByHttp\Http\Psr7\Response as Psr7Response;
+use by\component\http\ByHttp\Http\Psr7\Response as Psr7Response;
 
 class Response extends Psr7Response
 {

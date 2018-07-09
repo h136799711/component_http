@@ -1,7 +1,7 @@
 <?php
-namespace by\component_http\ByHttp\Http\Psr7;
+namespace by\component\http\ByHttp\Http\Psr7;
 
-use by\component_http\ByHttp\Stream\FileStream;
+use by\component\http\ByHttp\Stream\FileStream;
 use Psr\Http\Message\UploadedFileInterface;
 
 class UploadedFile implements UploadedFileInterface
@@ -38,7 +38,7 @@ class UploadedFile implements UploadedFileInterface
     
     /**
      * 文件流
-     * @var \by\component_http\ByHttp\Stream\FileStream
+     * @var \by\component\http\ByHttp\Stream\FileStream
      */
     protected $stream;
     

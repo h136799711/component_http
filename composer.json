@@ -12,7 +12,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "by\\component_http\\": "./src/"
+            "by\\component\\http\\": "./src/"
         }
     }
 }

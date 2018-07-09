@@ -1,5 +1,5 @@
 <?php
-namespace by\component_http\ByHttp\Stream;
+namespace by\component\http\ByHttp\Stream;
 
 use Psr\Http\Message\StreamInterface;
 

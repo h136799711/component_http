@@ -1,14 +1,14 @@
 <?php
-namespace by\component_http\ByHttp\Stream;
+namespace by\component\http\ByHttp\Stream;
 
+use by\component\http\ByHttp\Http\Psr7\Uri;
 use Psr\Http\Message\StreamInterface;
-use by\component_http\ByHttp\Http\Psr7\Uri;
 
 class FileStream implements StreamInterface
 {
 	/**
 	 * 文件Uri
-	 * @var \by\component_http\ByHttp\Http\Psr7\Uri
+	 * @var \by\component\http\ByHttp\Http\Psr7\Uri
 	 */
 	protected $uri;
 

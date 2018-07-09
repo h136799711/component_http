@@ -4,8 +4,8 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use by\component_http\ByHttp\Http\Request;
-use by\component_http\ByHttp;
+use by\component\http\ByHttp;
+use by\component\http\ByHttp\Http\Request;
 
 test();
 

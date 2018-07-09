@@ -1,5 +1,5 @@
 <?php
-namespace by\component_http\ByHttp\Http\Psr7\Consts;
+namespace by\component\http\ByHttp\Http\Psr7\Consts;
 
 abstract class StatusCode
 {

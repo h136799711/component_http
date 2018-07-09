@@ -6,12 +6,12 @@
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use by\component_http\ByHttp;
-use by\component_http\HttpRequest;
+use by\component\http\ByHttp;
+use by\component\http\HttpRequest;
 
 // 设置默认请求处理器为 Swoole
-ByHttp::setDefaultHandler('by\component_http\ByHttp\Handler\Swoole'); // php 5.4
-// ByHttp::setDefaultHandler(\by\component_http\ByHttp\Handler\Swoole::class); // php 5.5+
+ByHttp::setDefaultHandler('by\component\http\ByHttp\Handler\Swoole'); // php 5.4
+// ByHttp::setDefaultHandler(\by\component\http\ByHttp\Handler\Swoole::class); // php 5.5+
 
 // Swoole 处理器必须在协程中调用
 go('test');

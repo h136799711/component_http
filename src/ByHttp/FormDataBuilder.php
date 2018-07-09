@@ -1,5 +1,5 @@
 <?php
-namespace by\component_http\ByHttp;
+namespace by\component\http\ByHttp;
 
 abstract class FormDataBuilder
 {
@@ -7,7 +7,7 @@ abstract class FormDataBuilder
 	 * 构建form-data body内容
 	 * 
 	 * @param mixed $body
-	 * @param \by\component_http\ByHttp\Http\Psr7\UploadedFile[] $files
+	 * @param \by\component\http\ByHttp\Http\Psr7\UploadedFile[] $files
 	 * @param string $boundary
 	 * @return string
 	 */

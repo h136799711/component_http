@@ -1,11 +1,10 @@
 <?php
-namespace by\component_http\ByHttp\Http\Psr7;
+namespace by\component\http\ByHttp\Http\Psr7;
 
-use by\component_http\ByHttp\Http\Psr7\UploadedFile;
+use by\component\http\ByHttp\Http\Psr7\Consts\MediaType;
+use by\component\http\ByHttp\Http\Psr7\Consts\RequestHeader;
+use by\component\http\ByHttp\Http\Psr7\Consts\RequestMethod;
 use Psr\Http\Message\ServerRequestInterface;
-use by\component_http\ByHttp\Http\Psr7\Consts\MediaType;
-use by\component_http\ByHttp\Http\Psr7\Consts\RequestHeader;
-use by\component_http\ByHttp\Http\Psr7\Consts\RequestMethod;
 
 class ServerRequest extends Request implements ServerRequestInterface
 {
@@ -35,7 +34,7 @@ class ServerRequest extends Request implements ServerRequestInterface
 
     /**
      * 上传的文件
-     * @var \by\component_http\ByHttp\Http\Psr7\UploadedFile[]
+     * @var \by\component\http\ByHttp\Http\Psr7\UploadedFile[]
      */
     protected $files = [];
 
@@ -363,7 +362,7 @@ class ServerRequest extends Request implements ServerRequestInterface
     /**
      * 设置上传的文件
      * @param self $object
-     * @param \by\component_http\ByHttp\Http\Psr7\UploadedFile[] $files
+     * @param \by\component\http\ByHttp\Http\Psr7\UploadedFile[] $files
      * @return static
      */
     protected function setUploadedFiles(self $object, array $files)

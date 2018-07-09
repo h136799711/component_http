@@ -1,5 +1,5 @@
 <?php
-namespace by\component_http\ByHttp;
+namespace by\component\http\ByHttp;
 
 abstract class Random
 {

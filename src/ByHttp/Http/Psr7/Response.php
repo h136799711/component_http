@@ -1,8 +1,8 @@
 <?php
-namespace by\component_http\ByHttp\Http\Psr7;
+namespace by\component\http\ByHttp\Http\Psr7;
 
+use by\component\http\ByHttp\Http\Psr7\Consts\StatusCode;
 use Psr\Http\Message\ResponseInterface;
-use by\component_http\ByHttp\Http\Psr7\Consts\StatusCode;
 
 class Response extends AbstractMessage implements ResponseInterface
 {

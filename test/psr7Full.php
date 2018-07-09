@@ -4,11 +4,9 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use by\component_http\ByHttp\Http\Request;
-use by\component_http\ByHttp;
-use by\component_http\ByHttp\Stream\MemoryStream;
-use by\component_http\ByHttp\Http\Psr7\UploadedFile;
-use by\component_http\ByHttp\Http\Psr7\Uri;
+use by\component\http\ByHttp;
+use by\component\http\ByHttp\Http\Request;
+use by\component\http\ByHttp\Stream\MemoryStream;
 
 test();
 

@@ -4,10 +4,9 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use by\component_http\HttpRequest;
-use by\component_http\ByHttp\Http\Psr7\UploadedFile;
-use by\component_http\ByHttp\Http\Psr7\Consts\MediaType;
-use by\component_http\ByHttp;
+use by\component\http\ByHttp\Http\Psr7\Consts\MediaType;
+use by\component\http\ByHttp\Http\Psr7\UploadedFile;
+use by\component\http\HttpRequest;
 
 $http = new HttpRequest;
 // 同时支持POST参数、上传文件

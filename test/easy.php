@@ -4,7 +4,7 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use by\component_http\HttpRequest;
+use by\component\http\HttpRequest;
 
 $http = new HttpRequest;
 $response = $http->get('http://www.baidu.com');

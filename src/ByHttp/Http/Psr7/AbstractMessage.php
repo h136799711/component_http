@@ -1,9 +1,9 @@
 <?php
-namespace by\component_http\ByHttp\Http\Psr7;
+namespace by\component\http\ByHttp\Http\Psr7;
 
-use Psr\Http\Message\StreamInterface;
+use by\component\http\ByHttp\Stream\MemoryStream;
 use Psr\Http\Message\MessageInterface;
-use by\component_http\ByHttp\Stream\MemoryStream;
+use Psr\Http\Message\StreamInterface;
 
 abstract class AbstractMessage implements MessageInterface
 {

@@ -1,4 +1,4 @@
-# component_http
+# component\http
 
 
 
@@ -31,7 +31,7 @@
 
 ```php
 <?php
-use by\component_http\HttpRequest;
+use by\component\http\HttpRequest;
 
 $http = new HttpRequest;
 $response = $http->ua('ByHttp')
@@ -44,8 +44,8 @@ echo 'html:', PHP_EOL, $response->body();
 
 ```php
 <?php
-use by\component_http\ByHttp\Http\Request;
-use by\component_http\ByHttp;
+use by\component\http\ByHttp\Http\Request;
+use by\component\http\ByHttp;
 
 $url = 'http://www.baidu.com';
 

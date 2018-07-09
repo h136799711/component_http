@@ -1,16 +1,15 @@
 <?php
-namespace by\component_http\ByHttp\Http\Psr7;
+namespace by\component\http\ByHttp\Http\Psr7;
 
-use by\component_http\ByHttp\Http\Psr7\Uri;
-use Psr\Http\Message\UriInterface;
+use by\component\http\ByHttp\Http\Psr7\Consts\RequestMethod;
 use Psr\Http\Message\RequestInterface;
-use by\component_http\ByHttp\Http\Psr7\Consts\RequestMethod;
+use Psr\Http\Message\UriInterface;
 
 class Request extends AbstractMessage implements RequestInterface
 {
     /**
      * 请求地址
-     * @var by\component_http\ByHttp\Http\Psr7\Uri
+     * @var by\component\http\ByHttp\Http\Psr7\Uri
      */
     protected $uri;
 
@@ -28,7 +27,7 @@ class Request extends AbstractMessage implements RequestInterface
 
     /**
      * 构造方法
-     * @param string|by\component_http\ByHttp\Http\Psr7\Uri $url
+     * @param string|by\component\http\ByHttp\Http\Psr7\Uri $url
      * @param array $headers
      * @param string $body
      * @param string $method

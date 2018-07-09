@@ -1,12 +1,11 @@
 <?php
-namespace by\component_http\ByHttp\Handler;
+namespace by\component\http\ByHttp\Handler;
 
+use by\component\http\ByHttp\Http\Psr7\Consts\MediaType;
+use by\component\http\ByHttp\Http\Psr7\Uri;
+use by\component\http\ByHttp\Http\Response;
 use Swoole\Coroutine;
 use Swoole\Coroutine\Http\Client;
-use by\component_http\ByHttp\Http\Response;
-use by\component_http\ByHttp\FormDataBuilder;
-use by\component_http\ByHttp\Http\Psr7\Consts\MediaType;
-use by\component_http\ByHttp\Http\Psr7\Uri;
 
 class Swoole implements IHandler
 {
@@ -20,13 +19,13 @@ class Swoole implements IHandler
 	/**
 	 * 请求结果
 	 *
-	 * @var \by\component_http\ByHttp\Http\Response
+	 * @var \by\component\http\ByHttp\Http\Response
 	 */
     private $result;
 
 	/**
 	 * 请求内容
-	 * @var \by\component_http\ByHttp\Http\Request
+	 * @var \by\component\http\ByHttp\Http\Request
 	 */
     private $request;
     
@@ -38,7 +37,7 @@ class Swoole implements IHandler
     
     /**
      * 发送请求
-     * @param \by\component_http\ByHttp\Http\Request $request
+     * @param \by\component\http\ByHttp\Http\Request $request
      * @return void
      */
     public function send($request)
@@ -151,7 +150,7 @@ class Swoole implements IHandler
 
     /**
      * 接收请求
-     * @return \by\component_http\ByHttp\Http\Response
+     * @return \by\component\http\ByHttp\Http\Response
      */
     public function recv()
     {
@@ -161,7 +160,7 @@ class Swoole implements IHandler
 	/**
 	 * 获取响应对象
 	 *
-	 * @return \by\component_http\ByHttp\Http\Response
+	 * @return \by\component\http\ByHttp\Http\Response
 	 */
 	private function getResponse()
 	{

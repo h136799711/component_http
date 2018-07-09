@@ -1,7 +1,5 @@
 <?php
-namespace by\component_http;
-
-use by\component_http\ByHttp\Handler\Curl;
+namespace by\component\http;
 
 abstract class ByHttp
 {
@@ -9,7 +7,7 @@ abstract class ByHttp
      * 默认处理器类
      * @var string
      */
-    private static $defaultHandler = 'by\component_http\ByHttp\Handler\Curl';
+    private static $defaultHandler = 'by\component\http\ByHttp\Handler\Curl';
 
     private static $attributes = [];
 
@@ -34,8 +32,8 @@ abstract class ByHttp
 
     /**
      * 发送请求并获取结果
-     * @param \by\component_http\ByHttp\Http\Request $request
-     * @return \by\component_http\ByHttp\Http\Response
+     * @param \by\component\http\ByHttp\Http\Request $request
+     * @return \by\component\http\ByHttp\Http\Response
      */
     public static function send($request, $handlerClass = null)
     {

@@ -1,11 +1,9 @@
 <?php
-namespace by\component_http;
+namespace by\component\http;
 
-use by\component_http\ByHttp\Http\Psr7\Uri;
-use by\component_http\ByHttp\Http\Response;
-use by\component_http\ByHttp\Stream\MemoryStream;
-use by\component_http\ByHttp\Http\Request;
-use by\component_http\ByHttp\Http\Psr7\UploadedFile;
+use by\component\http\ByHttp\Http\Psr7\UploadedFile;
+use by\component\http\ByHttp\Http\Request;
+use by\component\http\ByHttp\Http\Response;
 
 class HttpRequest
 {
@@ -16,7 +14,7 @@ class HttpRequest
 	public $url;
 
 	/**
-	 * 发送内容，可以是字符串、数组（支持键值、by\component_http\ByHttp\Http\Psr7\UploadedFile，其中键值会作为html编码，文件则是上传）
+	 * 发送内容，可以是字符串、数组（支持键值、by\component\http\ByHttp\Http\Psr7\UploadedFile，其中键值会作为html编码，文件则是上传）
 	 * @var mixed
 	 */
 	public $content;

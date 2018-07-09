@@ -4,9 +4,7 @@
  */
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use by\component_http\HttpRequest;
-use by\component_http\ByHttp;
-use by\component_http\ByHttp\Handler\Swoole;
+use by\component\http\HttpRequest;
 
 $url = 'http://www.baidu.com';
 

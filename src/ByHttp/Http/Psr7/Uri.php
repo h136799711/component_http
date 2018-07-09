@@ -1,5 +1,5 @@
 <?php
-namespace by\component_http\ByHttp\Http\Psr7;
+namespace by\component\http\ByHttp\Http\Psr7;
 
 use Psr\Http\Message\UriInterface;
 
