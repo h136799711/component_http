@@ -6,6 +6,8 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 use by\component\http\HttpRequest;
 
-$http = new HttpRequest;
-$response = $http->get('http://www.baidu.com');
-echo 'html:', PHP_EOL, $response->body();
+//$http = new HttpRequest;
+$http = HttpRequest::newSession();
+$response = $http->get('https://www.biquge.com.cn/book/31833/489624.html');
+
+echo 'html:', PHP_EOL, $response->getBody()->getContents();
