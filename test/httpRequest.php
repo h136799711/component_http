@@ -6,7 +6,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 use by\component\http\HttpRequest;
 
-$url = 'http://127.0.0.1:8080/Index/upload';
+$url = 'http://www.baidu.com';
 
 $http = new HttpRequest;
 
@@ -78,7 +78,8 @@ $http->cookies([
 // 也可以如下方式调用，$body可以是上面传入content()方法中的值
 // $response = $http->post($url, $body);
 
-$response = $http->post($url);
+$response = $http->saveFile("./log.txt")->get($url);
+var_dump("错误:".$response->error());
 
 // 以上方法都可以连写比如：
 // $http->ua('userAgent')->timeout(10000)->get($url);

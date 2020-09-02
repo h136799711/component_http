@@ -14,7 +14,7 @@ class Curl implements IHandler
 	 * @var \by\component\http\ByHttp\Http\Response
 	 */
 	private $result;
-	
+
 	/**
 	 * curl 句柄
 	 * @var resource
@@ -32,7 +32,7 @@ class Curl implements IHandler
 	 * @var string
 	 */
 	private $curlResult;
-	
+
 	/**
 	 * 保存到的文件的句柄
 	 * @var resource
@@ -66,8 +66,10 @@ class Curl implements IHandler
     {
 		$this->request = $request;
 		$this->handler = curl_init();
-		$tempDir = $this->request->getAttribute('tempDir');
-		$cookieFileName = tempnam(null === $tempDir ? sys_get_temp_dir() : $tempDir, '');
+		$saveCookies = $this->request->getAttribute('save_cookies');
+        $saveCookies = ($saveCookies === true);
+
+
         $files = $this->request->getUploadedFiles();
 		$body = (string)$this->request->getBody();
 		if(isset($files[0]))
@@ -84,14 +86,18 @@ class Curl implements IHandler
 			CURLOPT_HEADER			=> true,
 			// 发送内容
 			CURLOPT_POSTFIELDS		=> $body,
-			// 保存cookie
-			CURLOPT_COOKIEFILE		=> $cookieFileName,
-			CURLOPT_COOKIEJAR		=> $cookieFileName,
 			// 自动重定向
 			CURLOPT_FOLLOWLOCATION	=> $this->request->getAttribute('customLocation', false) ? false : $this->request->getAttribute('followLocation', true),
 			// 最大重定向次数
 			CURLOPT_MAXREDIRS		=> $this->request->getAttribute('maxRedirects', 10),
         ];
+		if ($saveCookies) {
+            // 保存cookie
+            $tempDir = $this->request->getAttribute('tempDir');
+            $cookieFileName = tempnam(null === $tempDir ? sys_get_temp_dir() : $tempDir, '');
+            $options[CURLOPT_COOKIEFILE] = $cookieFileName;
+            $options[CURLOPT_COOKIEJAR] = $cookieFileName;
+        }
 		// 自动解压缩支持
 		$acceptEncoding = $this->request->getHeaderLine('Accept-Encoding');
 		if('' !== $acceptEncoding)
@@ -191,7 +197,7 @@ class Curl implements IHandler
 				$this->result = $this->result->withAddedHeader($name, $value);
 			}
 		}
-		
+
 		// cookies
 		$cookies = [];
 		$count = preg_match_all('/set-cookie\s*:\s*([^\r\n]+)/i', $headerContent, $matches);
@@ -217,10 +223,10 @@ class Curl implements IHandler
 
         curl_close($this->handler);
 	}
-	
+
 	/**
 	 * parseHeaderOneRequest
-	 * @param string $piece 
+	 * @param string $piece
 	 * @return array
 	 */
 	private function parseHeaderOneRequest($piece)
@@ -302,7 +308,7 @@ class Curl implements IHandler
 			));
 		}
 	}
-	
+
 	/**
 	 * 处理设置项
 	 * @return void
@@ -327,7 +333,7 @@ class Curl implements IHandler
 			curl_setopt($this->handler, CURLOPT_FILE, $this->saveFileFp);
 		}
 	}
-	
+
 	/**
 	 * 处理代理
 	 * @return void
@@ -346,7 +352,7 @@ class Curl implements IHandler
 			));
 		}
 	}
-	
+
 	/**
 	 * 处理headers
 	 * @return void
@@ -355,10 +361,10 @@ class Curl implements IHandler
     {
 		curl_setopt($this->handler, CURLOPT_HTTPHEADER, $this->parseHeadersFormat());
 	}
-	
+
 	/**
 	 * 处理成CURL可以识别的headers格式
-	 * @return array 
+	 * @return array
 	 */
 	private function parseHeadersFormat()
 	{
@@ -383,7 +389,7 @@ class Curl implements IHandler
 		}
 		curl_setopt($this->handler, CURLOPT_COOKIE, $content);
 	}
-	
+
 	/**
 	 * 处理网络相关
 	 * @return void

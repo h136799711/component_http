@@ -19,6 +19,8 @@ class HttpRequest
 	 */
 	public $content;
 
+	public $saveCookies = true;
+
 	/**
 	 * `curl_setopt_array()`所需要的第二个参数
 	 * @var array
@@ -132,7 +134,7 @@ class HttpRequest
 	 * 一个包含 PEM 格式证书的文件名
 	 * @var string
 	 */
-	
+
 	public $certPath = '';
 	/**
 	 * 使用证书需要的密码
@@ -145,7 +147,7 @@ class HttpRequest
 	 * @var string
 	 */
 	public $keyType = 'pem';
-	
+
 	/**
 	 * 包含 SSL 私钥的文件名
 	 * @var string
@@ -178,7 +180,7 @@ class HttpRequest
 
 	/**
 	 * 构造方法
-	 * @return mixed 
+	 * @return mixed
 	 */
 	public function __construct()
 	{
@@ -208,6 +210,7 @@ class HttpRequest
 			'type'	=>	'http',
 		);
 		$this->isVerifyCA = false;
+		$this->saveCookies = true;
 		$this->caCert = null;
 		$this->connectTimeout = 30000;
 		$this->timeout = 0;
@@ -224,7 +227,7 @@ class HttpRequest
 	 */
 	public function close()
 	{
-		
+
 	}
 
 	/**
@@ -278,6 +281,11 @@ class HttpRequest
 		return $this;
 	}
 
+	public function saveCookies($saveCookies) {
+	    $this->saveCookies = boolval($saveCookies);
+	    return $this;
+    }
+
 	/**
 	 * 批量设置CURL的Option
 	 * @param array $options curl_setopt_array()所需要的第二个参数
@@ -306,7 +314,7 @@ class HttpRequest
 
 	/**
 	 * 批量设置请求头
-	 * @param array $headers 
+	 * @param array $headers
 	 * @return static
 	 */
 	public function headers($headers)
@@ -351,7 +359,7 @@ class HttpRequest
 
 	/**
 	 * 设置Accept-Encoding
-	 * @param string $acceptEncoding 
+	 * @param string $acceptEncoding
 	 * @return static
 	 */
 	public function acceptEncoding($acceptEncoding)
@@ -362,7 +370,7 @@ class HttpRequest
 
 	/**
 	 * 设置Accept-Ranges
-	 * @param string $acceptRanges 
+	 * @param string $acceptRanges
 	 * @return static
 	 */
 	public function acceptRanges($acceptRanges)
@@ -373,7 +381,7 @@ class HttpRequest
 
 	/**
 	 * 设置Cache-Control
-	 * @param string $cacheControl 
+	 * @param string $cacheControl
 	 * @return static
 	 */
 	public function cacheControl($cacheControl)
@@ -407,7 +415,7 @@ class HttpRequest
 
 	/**
 	 * 设置Content-Type
-	 * @param string $contentType 
+	 * @param string $contentType
 	 * @return static
 	 */
 	public function contentType($contentType)
@@ -418,7 +426,7 @@ class HttpRequest
 
 	/**
 	 * 设置Range
-	 * @param string $range 
+	 * @param string $range
 	 * @return static
 	 */
 	public function range($range)
@@ -429,7 +437,7 @@ class HttpRequest
 
 	/**
 	 * 设置Referer
-	 * @param string $referer 
+	 * @param string $referer
 	 * @return static
 	 */
 	public function referer($referer)
@@ -440,7 +448,7 @@ class HttpRequest
 
 	/**
 	 * 设置User-Agent
-	 * @param string $userAgent 
+	 * @param string $userAgent
 	 * @return static
 	 */
 	public function userAgent($userAgent)
@@ -451,7 +459,7 @@ class HttpRequest
 
 	/**
 	 * 设置User-Agent，userAgent的别名
-	 * @param string $userAgent 
+	 * @param string $userAgent
 	 * @return static
 	 */
 	public function ua($userAgent)
@@ -461,7 +469,7 @@ class HttpRequest
 
 	/**
 	 * 设置失败重试次数，状态码非200时重试
-	 * @param string $retry 
+	 * @param string $retry
 	 * @return static
 	 */
 	public function retry($retry)
@@ -563,7 +571,7 @@ class HttpRequest
 
 	/**
 	 * 获取文件保存路径
-	 * @return string 
+	 * @return string
 	 */
 	public function getSavePath()
 	{
@@ -646,13 +654,13 @@ class HttpRequest
 		return [$body, $files];
 	}
 
-	/**
-	 * 发送请求，所有请求的老祖宗
-	 * @param string $url 请求地址，如果为null则取url属性值
-	 * @param array $requestBody 发送内容，可以是字符串、数组，如果为空则取content属性值
-	 * @param array $method 请求方法，GET、POST等
-	 * @return Response 
-	 */
+    /**
+     * 发送请求，所有请求的老祖宗
+     * @param string $url 请求地址，如果为null则取url属性值
+     * @param array $requestBody 发送内容，可以是字符串、数组，如果为空则取content属性值
+     * @param string $method 请求方法，GET、POST等
+     * @return Response
+     */
 	public function send($url = null, $requestBody = null, $method = 'GET')
 	{
 		list($body, $files) = $this->parseRequestBody(null === $requestBody ? $this->content : $requestBody);
@@ -683,6 +691,7 @@ class HttpRequest
 		{
 			$request = $request->withAttribute('proxy.' . $name, $value);
 		}
+        ByHttp::setAttribute("save_cookies", $this->saveCookies);
 		return ByHttp::send($request);
 	}
 
@@ -690,7 +699,7 @@ class HttpRequest
 	 * GET请求
 	 * @param string $url 请求地址，如果为null则取url属性值
 	 * @param array $requestBody 发送内容，可以是字符串、数组，如果为空则取content属性值
-	 * @return Response 
+	 * @return Response
 	 */
 	public function get($url = null, $requestBody = null)
 	{
@@ -713,7 +722,7 @@ class HttpRequest
 	 * POST请求
 	 * @param string $url 请求地址，如果为null则取url属性值
 	 * @param array $requestBody 发送内容，可以是字符串、数组，如果为空则取content属性值
-	 * @return Response 
+	 * @return Response
 	 */
 	public function post($url = null, $requestBody = null)
 	{
@@ -724,7 +733,7 @@ class HttpRequest
 	 * HEAD请求
 	 * @param string $url 请求地址，如果为null则取url属性值
 	 * @param array $requestBody 发送内容，可以是字符串、数组，如果为空则取content属性值
-	 * @return Response 
+	 * @return Response
 	 */
 	public function head($url = null, $requestBody = null)
 	{
@@ -735,7 +744,7 @@ class HttpRequest
 	 * PUT请求
 	 * @param string $url 请求地址，如果为null则取url属性值
 	 * @param array $requestBody 发送内容，可以是字符串、数组，如果为空则取content属性值
-	 * @return Response 
+	 * @return Response
 	 */
 	public function put($url = null, $requestBody = null)
 	{
@@ -746,7 +755,7 @@ class HttpRequest
 	 * PATCH请求
 	 * @param string $url 请求地址，如果为null则取url属性值
 	 * @param array $requestBody 发送内容，可以是字符串、数组，如果为空则取content属性值
-	 * @return Response 
+	 * @return Response
 	 */
 	public function patch($url = null, $requestBody = null)
 	{
@@ -757,7 +766,7 @@ class HttpRequest
 	 * DELETE请求
 	 * @param string $url 请求地址，如果为null则取url属性值
 	 * @param array $requestBody 发送内容，可以是字符串、数组，如果为空则取content属性值
-	 * @return Response 
+	 * @return Response
 	 */
 	public function delete($url = null, $requestBody = null)
 	{

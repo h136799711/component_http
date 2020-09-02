@@ -9,7 +9,8 @@ abstract class ByHttp
      */
     private static $defaultHandler = 'by\component\http\ByHttp\Handler\Curl';
 
-    private static $attributes = [];
+    private static $attributes = [
+    ];
 
     /**
      * 设置默认处理器类
