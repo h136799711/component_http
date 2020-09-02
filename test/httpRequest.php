@@ -78,7 +78,7 @@ $http->cookies([
 // 也可以如下方式调用，$body可以是上面传入content()方法中的值
 // $response = $http->post($url, $body);
 
-$response = $http->saveFile("./log.txt")->get($url);
+$response = $http->saveCookies(false)->saveFile("./log.txt")->get($url);
 var_dump("错误:".$response->error());
 
 // 以上方法都可以连写比如：

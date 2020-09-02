@@ -1,6 +1,12 @@
 # component\http
 
+# 1.1.0 
 
+1. 增加一个配置，saveCookies 是否保存cookies
+   在做爬虫功能时可以避免创建cookies临时文件, 免得磁盘inode会爆
+   ```
+   (new HttpRequest())->saveCookies(false) 
+   ```
 
 ## 简介
 
